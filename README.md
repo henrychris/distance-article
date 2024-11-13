@@ -1,37 +1,76 @@
-# DistanceArticle
+# Distance Article
 
 ## Description
 
-This is a template for projects in C#. It is meant for a single web API project.
+This project demonstrates how to calculate distances between geographic points using NetTopologySuite with PostgreSQL's PostGIS extension. It provides a practical example of:
+
+- Using geography and geometry types in PostgreSQL
+- Implementing distance calculations between coordinates
+- Working with NetTopologySuite in .NET
+- Using Entity Framework Core with spatial data
+
+## Features
+
+- Calculate distances between geographic points using PostGIS
+- Support for both geometry and geography types
+- RESTful API endpoints for querying nearby venues
+- Sample data including popular New York landmarks
+- Haversine distance calculation implementation
+
+## Prerequisites
+
+- .NET 8.0
+- PostgreSQL with PostGIS extension
+- Docker (optional)
 
 ## Installation
 
-Clone the repository  
+1. Clone the repository
 
-```bash
-git clone https://github.com/henrychris/distancearticle.git
-```
+ ```bash
+ git clone https://github.com/henrychris/distancearticle.git
+ ```
 
-cd to the root directory  
+2. Navigate to the project directory
 
-```bash
-cd distancearticle
-```
+ ```bash
+ cd distancearticle
+ ```
 
-Install the template
+3. Set up your database connection string in `appsettings.Development.json`:
 
-```bash
-dotnet new install .
-```
+ ```json
+ {
+ "DatabaseSettings": {
+ "ConnectionString": "Host=localhost;Database=your_database;Username=your_username;Password=your_password"
+ }
+ }
+ ```
+
+4. Run database migrations
+
+ ```bash
+ dotnet ef database update
+ ```
 
 ## Usage
 
-Create a new project
+1. Start the API
 
 ```bash
-dotnet new distancearticle -n YourProjectName
+dotnet run
 ```
 
-You can run the project using the `dotnet run` command in the DistanceArticle folder. The project will be available at `http://localhost:5051`.
+2. Test the API endpoints
 
-Access `http://localhost:5051/swagger` to see the available endpoints.
+- `GET /venue/nearby` - Find venues near a specific location using geography type
+- `GET /venue/geometry` - Find venues near a specific location using geometry type
+
+```bash
+curl --request GET \
+  --url 'http://localhost:5051/api/venue/nearby?latitude=40.7128&longitude=-74.0060&rangeInKm=1'
+```
+
+## Links
+
+This repository accompanies this article written by me on [Medium](link).
