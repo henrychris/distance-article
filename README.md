@@ -73,4 +73,4 @@ curl --request GET \
 
 ## Links
 
-This repository accompanies this article written by me on [Medium](link).
+This repository accompanies this article written by me on [Medium]([link](https://medium.com/@hiddenhenry/calculating-distances-in-net-core-with-postgis-cartesian-vs-haversine-vs-geography-type-1893d80fb57c)).
